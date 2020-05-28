@@ -15,13 +15,13 @@ import java.rmi.registry.Registry;
 
 
 /**  
- * @FileName: JmxStarter
+ * @FileName: JmxServerStarter
  * @Description: TODO
  * @Author: ZhengShunDong
  * @Date: 2020/5/27 16:39
  * @Version: 1.0
  */
-public class JmxStarter {
+public class JmxServerStarter {
 
     public static void main(String[] args) throws Exception{
         // 创建一个MBeanServer管理Bean
@@ -34,7 +34,7 @@ public class JmxStarter {
         server.registerMBean(new StandardJmx(), objectName);
 
         // 2、DynamicMBean
-        server.registerMBean(new DynamicJmx(), objectName);
+        server.registerMBean(new DynamicJmx(), new ObjectName("jmx:name=DynamicJmx"));
         server.registerMBean(new DynamicMBeanJmx(), new ObjectName("jmx:name=DynamicMBeanJmx"));
         System.out.println("Success");
 
